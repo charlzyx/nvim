@@ -82,7 +82,7 @@ local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["/"] = { ":lua require('Comment.api').toggle_current_blockwise()<CR>", "Comments" },
+  ["/"] = { ":lua require('Comment.api').toggle_current_linewise()<CR>", "Comments" },
   --[[ Search Actions ]]
 
   s = {

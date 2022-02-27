@@ -24,9 +24,9 @@ null_ls.setup({
     formatting.eslint.with({
       filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
       prefer_local = "node_modules/.bin",
-      args = { "--fix-dry-run", "--fix-type problem", "--format", "JSON", "--stdin", "--stdin-filename", "$FILENAME" },
+      args = { "--fix", "--fix-type problem", "--format", "pretty", "--stdin", "--stdin-filename", "$FILENAME" },
       condition = function(utils)
-        return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
+        return utils.root_has_file({ ".eslintrc.yaml", ".eslintrc.json", ".eslintrc.js" })
       end,
     }),
     formatting.black.with({ extra_args = { "--fast" } }),
@@ -34,6 +34,8 @@ null_ls.setup({
       condition = function(utils)
         return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
       end,
+
+
     }),
     -- diagnostics.flake8
   },

@@ -18,7 +18,7 @@ local setup = {
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
+      nav = false, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
       g = true, -- bindings for prefixed with g
     },
@@ -43,9 +43,9 @@ local setup = {
     scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
   window = {
-    border = "rounded", -- none, single, double, shadow
+    border = "single", -- none, single, double, shadow
     position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+    margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
     winblend = 0,
   },
@@ -87,26 +87,20 @@ local mappings = {
 
   s = {
     name = "Search",
-    a = { "<cmd>Telescope commands<cr>", "Commands" },
     s = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     f = {
       "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Find files",
     },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-  },
-
-  --[[ Telescope ]]
-  p = {
-    name = "Telescope",
     p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   },
+
   --[[ Buffers ]]
   b = {
     name = "Buffers",
@@ -119,9 +113,9 @@ local mappings = {
   --[[ Code Actions ]]
   c = {
     name = "Code Edit",
-    s = { "<cmd>EslintFixAll<CR>", "EslintFixAll" },
+    c = { "<cmd>EslintFixAll<CR>", "EslintFixAll" },
+    s = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
   },
   --[[ LSP ]]
   l = {
